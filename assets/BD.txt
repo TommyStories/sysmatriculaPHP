@@ -1,0 +1,33 @@
+CREATE DATABASE Universidad;
+
+CREATE TABLE Estudiante(
+id INT UNSIGNED AUTO_INCREMENT,
+nombre VARCHAR(100),
+contraseña VARCHAR(50) NOT NULL,
+PRIMARY KEY(id));
+
+CREATE TABLE Facultad(
+id INT UNSIGNED AUTO_INCREMENT,
+nombre VARCHAR(45) NOT NULL,
+PRIMARY KEY(id));
+
+CREATE TABLE Materia(
+id INT UNSIGNED AUTO_INCREMENT,
+nombre VARCHAR(45) NOT NULL,
+facultad INT UNSIGNED NOT NULL,
+PRIMARY KEY(id),
+FOREIGN KEY(facultad) REFERENCES Facultad(id));
+
+CREATE TABLE Recibe(
+id_Est INT UNSIGNED,
+id_Mat INT UNSIGNED,
+FOREIGN KEY(id_Est) REFERENCES Estudiante(id),
+FOREIGN KEY(id_Mat) REFERENCES Materia(id));
+
+INSERT INTO Facultad(nombre) VALUES
+('Ciencias Informaticas'),('Medicina'),('Economia'),('Matematicas'),('Lenguaje');
+
+INSERT INTO Materia(nombre,facultad) VALUES
+('Bases de Datos',1),('Biologia',2),('Contabilidad',3),('Calculo',4),('Ortografia',5),
+('Machine Learning',1),('Farmacologia',2),('Capital',3),('Algebra',4),('Escritura',5);
+
