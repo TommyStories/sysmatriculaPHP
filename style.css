@@ -1,11 +1,11 @@
 
+form{
+    padding: 50px;
+}
+
 .header{
     background-color: lightgray;
 }
 
-.footer{
-    position: sticky;
-    margin-top: 520px;
-    text-align: center;
-}
+
 

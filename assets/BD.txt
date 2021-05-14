@@ -3,7 +3,7 @@ CREATE DATABASE Universidad;
 CREATE TABLE Estudiante(
 id INT UNSIGNED AUTO_INCREMENT,
 nombre VARCHAR(100),
-contraseña VARCHAR(50) NOT NULL,
+contrasena VARCHAR(50) NOT NULL,
 PRIMARY KEY(id));
 
 CREATE TABLE Facultad(
@@ -31,3 +31,17 @@ INSERT INTO Materia(nombre,facultad) VALUES
 ('Bases de Datos',1),('Biologia',2),('Contabilidad',3),('Calculo',4),('Ortografia',5),
 ('Machine Learning',1),('Farmacologia',2),('Capital',3),('Algebra',4),('Escritura',5);
 
+INSERT INTO Estudiante(nombre,contrasena) VALUES ('Tommy','admin25'),
+
+SELECT M.id,M.nombre AS 'materia',F.nombre AS 'facultad' FROM Recibe R
+INNER JOIN Materia M ON R.id_Mat=M.id
+INNER JOIN Facultad F ON M.facultad=F.id WHERE R.id_Est=1;
+
+DELETE FROM Recibe WHERE id_Est=1 AND id_Mat=1
+
+
+SELECT E.nombre AS Estudiante, M.nombre AS Materia, F.nombre AS Facultad, 
+E.id AS idE, M.id AS idM
+FROM Recibe R  INNER JOIN Estudiante E ON R.id_Est=E.id
+INNER JOIN Materia M ON R.id_Mat=M.id
+INNER JOIN Facultad F ON M.facultad=F.id WHERE E.nombre LIKE :estudiante
